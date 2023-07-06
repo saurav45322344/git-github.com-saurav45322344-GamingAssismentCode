@@ -1,0 +1,5 @@
+package com.ManyToManyhibernatejpa.repository;
+
+public interface UserRepository {
+
+}

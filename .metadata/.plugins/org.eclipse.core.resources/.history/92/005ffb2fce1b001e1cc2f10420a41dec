@@ -1,0 +1,5 @@
+package com.ManyToManyhibernatejpa.controller;
+
+public class LostController {
+
+}

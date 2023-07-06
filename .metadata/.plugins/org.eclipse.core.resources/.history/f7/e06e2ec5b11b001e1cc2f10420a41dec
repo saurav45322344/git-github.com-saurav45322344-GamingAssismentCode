@@ -1,0 +1,24 @@
+package com.ManyToManyhibernatejpa.repository;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import com.ManyToManyhibernatejpa.entity.UserCourseProgress;
+
+@Repository
+
+
+
+
+public interface UserCourseProgressRepository extends JpaRepository<UserCourseProgress, Integer> 
+{
+
+	@Query("SELECT course_name FROM user_course_progress WHERE course_name.courseid=? AND course_name.userid=?")
+Optional<UserCourseProgress> findById(int courseid, int userid);
+	  
+}

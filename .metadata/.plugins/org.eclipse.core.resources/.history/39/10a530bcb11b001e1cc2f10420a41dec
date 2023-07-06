@@ -1,0 +1,32 @@
+package com.ManyToManyhibernatejpa.controller;
+
+import java.util.Optional;
+
+import org.apache.catalina.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ManyToManyhibernatejpa.entity.UserCourseProgress;
+import com.ManyToManyhibernatejpa.service.UserCourseProgressService;
+
+@RestController
+public class UsercourseProgressController {
+
+	@Autowired
+	private UserCourseProgressService userCourseProgressService;
+	
+	@PostMapping("/addCourse")
+	public UserCourseProgress addCourse(@RequestBody UserCourseProgress userCourseProgress) {
+		return userCourseProgressService.saveCourseProgress(userCourseProgress);
+		
+	}
+	@GetMapping("/getCourse/{courseid}/{userid}")
+	public Optional<UserCourseProgress> findByCouserIdUserId(@PathVariable("courseid") int courseid,@PathVariable("userid") int userid)
+	{
+		return userCourseProgressService.getCourseProgressbyId(courseid, userid);
+	}
+}

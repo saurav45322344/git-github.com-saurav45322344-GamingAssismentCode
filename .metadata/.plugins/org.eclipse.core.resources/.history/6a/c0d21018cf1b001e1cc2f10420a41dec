@@ -1,0 +1,40 @@
+package com.ManyToManyhibernatejpa.controller;
+
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.ManyToManyhibernatejpa.entity.Game;
+import com.ManyToManyhibernatejpa.entity.User;
+import com.ManyToManyhibernatejpa.service.GameService;
+
+import jakarta.servlet.http.HttpSession;
+
+@Controller
+public class LostController {
+
+	private final GameService gameService;
+
+    public LostController(GameService gameService) {
+        this.gameService = gameService;
+    }
+	
+    
+    @GetMapping("/game-end")
+    public String showLostScreen(Model model) {
+        HttpSession user = gameService.getUserFromSession(user); // Implement a method to get the logged-in user from the session
+        List<Game> gameHistory = gameService.getGameHistory((org.apache.catalina.User) user);
+
+        model.addAttribute("gameHistory", gameHistory);
+        return "game-end";
+    }
+
+    @PostMapping("/play-again")
+    public String playAgain() {
+        return "redirect:/game-play";
+    }
+    
+}

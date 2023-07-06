@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;RoleBasedToken&apos;" deleteContents="false" description="Delete resource &apos;RoleBasedToken&apos;" element1="/RoleBasedToken" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1672160358756"/>
+</session>

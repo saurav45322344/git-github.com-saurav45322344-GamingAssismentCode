@@ -1,0 +1,43 @@
+package com.ManyToManyhibernatejpa.service;
+
+import org.springframework.stereotype.Service;
+
+import com.ManyToManyhibernatejpa.repository.GameRepository;
+
+@Service
+public class GameServices {
+
+	
+	
+	private final GameRepository gameRepository;
+
+    public GameService(GameRepository gameRepository) {
+        this.gameRepository = gameRepository;
+    }
+
+    public Game playGame(User user, int coinsPicked) {
+        int remainingCoins = 21 - coinsPicked;
+
+        if (remainingCoins <= 1) {
+            // Player loses
+            Game game = new Game();
+            game.setUser(user);
+            game.setCoinsPicked(coinsPicked);
+            game.setResult("Lost");
+            game.setTimestamp(LocalDateTime.now());
+            gameRepository.save(game);
+            return game;
+        } else {
+            // AI pick
+            int aiCoinsPicked = remainingCoins % 5;
+
+            Game game = new Game();
+            game.setUser(user);
+            game.setCoinsPicked(coinsPicked);
+            game.setResult("Won");
+            game.setTimestamp(LocalDateTime.now());
+            gameRepository.save(game);
+            return game;
+        }
+    }
+}

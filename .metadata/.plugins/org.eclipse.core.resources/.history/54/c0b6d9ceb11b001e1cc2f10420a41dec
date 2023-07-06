@@ -1,0 +1,32 @@
+package com.ManyToManyhibernatejpa.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ManyToManyhibernatejpa.entity.UserCourseProgress;
+import com.ManyToManyhibernatejpa.repository.UserCourseProgressRepository;
+
+@Service
+public class UserCourseProgressService {
+
+	
+	@Autowired
+	private UserCourseProgressRepository userCourseProgressRepository;
+	
+	public UserCourseProgress saveCourseProgress(UserCourseProgress userCourseProgress)
+	{
+		return userCourseProgressRepository.save(userCourseProgress);
+	}
+
+	public Optional<UserCourseProgress> getCourseProgressbyId(int courseid, int userid) {
+		// TODO Auto-generated method stub
+		return userCourseProgressRepository.findById(courseid,userid);
+	
+
+}
+	
+}

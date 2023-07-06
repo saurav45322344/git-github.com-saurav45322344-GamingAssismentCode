@@ -1,0 +1,5 @@
+package com.ManyToManyhibernatejpa.service;
+
+public class UserService {
+
+}

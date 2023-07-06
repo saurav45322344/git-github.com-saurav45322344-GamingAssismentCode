@@ -1,0 +1,5 @@
+package com.ManyToManyhibernatejpa.entity;
+
+public class GameRequest {
+
+}
